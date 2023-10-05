@@ -5,3 +5,6 @@ class OrderItem:
       self._unitary_price = unitary_price
       self._order = order
       self._product = product
+
+   def show_quantity(self):
+      print(f"Quantidade: {self._quantity}")
