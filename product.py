@@ -6,3 +6,7 @@ class Product:
         self._date_fabrication = date_fabrication
         self._is_active = is_active
         self._category = category
+
+    def show_description(self):
+        print(f"Descrição do produto {self._name}: {self._description}")
+         
