@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'core.apps.CoreConfig', 
     'categories.apps.CategoriesConfig',
+    'socialnetworks.apps.SocialnetworksConfig',
 ]
 
 MIDDLEWARE = [
