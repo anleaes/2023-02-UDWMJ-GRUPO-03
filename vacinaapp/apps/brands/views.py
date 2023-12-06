@@ -12,7 +12,7 @@ def add_brand(request):
             f = form.save(commit=False)
             f.save()
             form.save_m2m()
-            return redirect('Brands:list_brands')
+            return redirect('brands:list_brands')
     form = BrandForm()
     context['form'] = form
     return render(request, template_name, context)
@@ -25,10 +25,10 @@ def list_brands(request):
     }
     return render(request, template_name, context)
 
-def edit_brands(request, id_brands):
-    template_name = 'brands/add_brand.html'
+def edit_brands(request, id_brand):
+    template_name = 'brands/add_brands.html'
     context ={}
-    brand = get_object_or_404(brand, id=id_brands)
+    brand = get_object_or_404(Brand, id=id_brand)
     if request.method == 'POST':
         form = BrandForm(request.POST, instance=brand)
         if form.is_valid():
@@ -39,6 +39,6 @@ def edit_brands(request, id_brands):
     return render(request, template_name, context)
 
 def delete_brand(request, id_brand):
-    brand = brand.objects.get(id=id_brand)
+    brand = Brand.objects.get(id=id_brand)
     brand.delete()
     return redirect('brands:list_brands')
