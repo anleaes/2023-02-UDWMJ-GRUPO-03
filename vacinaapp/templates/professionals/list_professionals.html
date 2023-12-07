@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    Lista de Profissionais - {{ block.super }}
+
+{% endblock title %}
+
+{% block body %}
+
+    <div class="container">
+        <br />
+        <h5><b>Lista de Profissionais</b></h5>
+        <div class="row">
+            <div class ="col-md-12">
+                <br />
+                    <a href="{% url 'professionals:add_professional' %}">Cadastro de novo profissional</a>
+                <br />
+                <br />
+                <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Sobrenome</th>
+                    <th scope="col">Idade</th>
+                    <th scope="col">Genero</th>
+                    <th scope="col">CPF</th>
+                    <th scope="col">Telefone</th>
+                    <th scope="col">Endereco</th>
+                    <th scope="col">Registro</th>
+                    <th scope="col">Plano</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for professional in professionals %}
+                        <tr>
+                            <th scope="row">{{ professional.id }}</th>
+                            <td>{{ professional.first_name }}</td>
+                            <td>{{ professional.last_name }}</td>
+                            <td>{{ professional.age }}</td>
+                            <td>{{ professional.gender }}</td>
+                            <td>{{ professional.cpf }}</td>
+                            <td>{{ professional.phone }}</td>
+                            <td>{{ professional.address }}</td>
+                            <td>{{ professional.license }}</td>
+                            <td>{{ professional.health_plan }}</td>
+                            <td>
+                                <a href="{% url 'professionals:edit_professional' professional.id %}" class="btn btn-primary btn-sm">Editar</a>
+                            </td>
+                            <td>
+                                <a href="{% url 'professionals:delete_professional' professional.id %}" class="btn btn-danger btn-sm ">Excluir</a>
+                            </td>
+                        </tr> 
+                    {% endfor %}
+                </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock body %}
