@@ -4,8 +4,8 @@ from .models import Vaccine
 
 # Create your views here.
 
-def add_product(request):
-    template_name = 'vaccines/add_product.html'
+def add_vaccine(request):
+    template_name = 'vaccines/add_vaccine.html'
     context = {}
     if request.method == 'POST':
         form = VaccineForm(request.POST, request.FILES)
@@ -26,20 +26,20 @@ def list_vaccines(request):
     }
     return render(request, template_name, context)
 
-def edit_product(request, id_product):
-    template_name = 'vaccines/add_product.html'
+def edit_vaccine(request, id_vaccine):
+    template_name = 'vaccines/add_vaccine.html'
     context ={}
-    product = get_object_or_404(Vaccine, id=id_product)
+    vaccine = get_object_or_404(Vaccine, id=id_vaccine)
     if request.method == 'POST':
-        form = VaccineForm(request.POST, request.FILES,  instance=product)
+        form = VaccineForm(request.POST, request.FILES,  instance=vaccine)
         if form.is_valid():
             form.save()
             return redirect('vaccines:list_vaccines')
-    form = VaccineForm(instance=product)
+    form = VaccineForm(instance=vaccine)
     context['form'] = form
     return render(request, template_name, context)
 
-def delete_product(request, id_product):
-    product = Vaccine.objects.get(id=id_product)
-    product.delete()
+def delete_vaccine(request, id_vaccine):
+    vaccine = Vaccine.objects.get(id=id_vaccine)
+    vaccine.delete()
     return redirect('vaccines:list_vaccines')
