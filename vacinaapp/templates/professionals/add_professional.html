@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% block title %}
+
+    Adicionar Profissional - {{ block.super }}
+
+{% endblock title %}
+
+{% block body %}
+
+    <div class="container">
+        <br />
+    <h5><b>Cadastro de Profissionais</b></h5>
+        <div class="row">
+            <div class ="col-md-12">
+                <form action="" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                   <label for="{{ form.first_name.id_for_label }}">Nome</label>
+                   {{ form.first_name|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.last_name.id_for_label }}">Sobrenome</label>
+                    {{ form.last_name|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                  <label for="{{ form.age.id_for_label }}">Idade</label>
+                  {{ form.age|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.gender.id_for_label }}">Genero</label>
+                    {{ form.gender|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.cpf.id_for_label }}">CPF</label>
+                    {{ form.cpf|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.phone.id_for_label }}">Telefone</label>
+                    {{ form.phone|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.address.id_for_label }}">Endereco</label>
+                    {{ form.address|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.license.id_for_label }}">Registro Profissional</label>
+                    {{ form.license|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.health_plan.id_for_label }}">Plano de Saude</label>
+                    {{ form.health_plan|add_class:"form-control" }}
+                </div>
+                    <button type="submit" class="btn btn-primary">Salvar</button>       
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock body %}
