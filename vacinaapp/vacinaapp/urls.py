@@ -24,6 +24,7 @@ urlpatterns = [
     path('profissionais/', include('professionals.urls', namespace='professionals')),
     path('patients/', include('patients.urls', namespace='patients')),
     path('brands/', include('brands.urls', namespace='brands')),
+    path('centros_de_saude/', include('healthcenters.urls', namespace='healthcenters')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
