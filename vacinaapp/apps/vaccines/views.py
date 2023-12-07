@@ -8,7 +8,7 @@ def add_vaccine(request):
     template_name = 'vaccines/add_vaccine.html'
     context = {}
     if request.method == 'POST':
-        form = VaccineForm(request.POST, request.FILES)
+        form = VaccineForm(request.POST)
         if form.is_valid():
             f = form.save(commit=False)
             f.save()

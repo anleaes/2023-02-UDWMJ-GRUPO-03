@@ -8,7 +8,7 @@ class Vaccine(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
     name = models.CharField('Nome', max_length=50)
     target_disease = models.TextField('Doenca Alvo', max_length=100)
-    Batch = models.ForeignKey(Batch, on_delete=models.CASCADE)
+    batch = models.ForeignKey(Batch, on_delete=models.CASCADE)
     
     class Meta:
         verbose_name = 'Vaccine'
