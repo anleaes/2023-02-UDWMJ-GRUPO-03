@@ -25,20 +25,20 @@ def list_batches(request):
     }
     return render(request, template_name, context)
 
-def edit_product(request, id_product):
-    template_name = 'batches/add_product.html'
+def edit_batch(request, id_batch):
+    template_name = 'batches/add_batch.html'
     context ={}
-    product = get_object_or_404(Batch, id=id_product)
+    batch = get_object_or_404(Batch, id=id_batch)
     if request.method == 'POST':
-        form = BatchForm(request.POST, request.FILES,  instance=product)
+        form = BatchForm(request.POST, request.FILES,  instance=batch)
         if form.is_valid():
             form.save()
             return redirect('batches:list_batches')
-    form = BatchForm(instance=product)
+    form = BatchForm(instance=batch)
     context['form'] = form
     return render(request, template_name, context)
 
-def delete_product(request, id_product):
-    batch = Batch.objects.get(id=id_product)
-    product.delete()
+def delete_batch(request, id_batch):
+    batch = Batch.objects.get(id=id_batch)
+    batch.delete()
     return redirect('batches:list_batches')
