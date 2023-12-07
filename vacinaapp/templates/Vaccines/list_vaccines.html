@@ -23,7 +23,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Nome</th>
                     <th scope="col">Doenca Alvo</th>
-                    <th scope="col">Marca</th>
+                    <th scope="col">Lote</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
                     </tr>
@@ -36,13 +36,6 @@
                             <td>{{ vaccine.target_disease }}</td>
                             <td>{{ vaccine.batch }}</td>
                             <td>
-                                {% if vaccine.is_active == True %}
-                                    Ativo
-                                {% endif %}
-                                {% if vaccine.is_active == False %}
-                                    Inativo
-                                {% endif %}
-                            </td>
                                 <a href="{% url 'vaccines:edit_vaccine' vaccine.id %}" class="btn btn-primary btn-sm">Editar</a>
                             </td>
                             <td>    
