@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'brands.apps.BrandsConfig',
     'healthcenters.apps.HealthcentersConfig',
     'batches.apps.BatchesConfig',
+    'products.apps.VaccinesConfig',
 ]
 
 MIDDLEWARE = [
