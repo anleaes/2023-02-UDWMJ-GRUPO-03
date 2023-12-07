@@ -7,7 +7,7 @@ def add_batch(request):
     template_name = 'batches/add_batch.html'
     context = {}
     if request.method == 'POST':
-        form = BatchForm(request.POST, request.FILES)
+        form = BatchForm(request.POST)
         if form.is_valid():
             f = form.save(commit=False)
             f.save()

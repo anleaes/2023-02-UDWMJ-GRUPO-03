@@ -6,10 +6,9 @@ from brands.models import Brand
 class Batch(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
-    is_active = models.BooleanField('Ativo', default=False)
     number = models.IntegerField('Numero do Lote')
-    date = models.DateField('Data Fabricacao', auto_now=False, auto_now_add=False)
-    expitarion_date = models.DateField('Data Expiracao', auto_now=False, auto_now_add=False)
+    date = models.DateField('Data de Fabricacao', auto_now=False, auto_now_add=False)
+    expiration_date = models.DateField('Data Expiracao', auto_now=False, auto_now_add=False)
     quantity = models.IntegerField('Quantidade de Vacinas')
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
 
