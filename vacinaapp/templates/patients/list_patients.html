@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    Lista de Pacientes - {{ block.super }}
+
+{% endblock title %}
+
+{% block body %}
+
+    <div class="container">
+        <br />
+        <h5><b>Lista de Pacientes</b></h5>
+        <div class="row">
+            <div class ="col-md-12">
+                <br />
+                    <a href="{% url 'patients:add_patient' %}">Cadastro de novo paciente</a>
+                <br />
+                <br />
+                <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Sobrenome</th>
+                    <th scope="col">Idade</th>
+                    <th scope="col">Genero</th>
+                    <th scope="col">CPF</th>
+                    <th scope="col">Telefone</th>
+                    <th scope="col">Endereco</th>
+                    <th scope="col">Doencas</th>
+                    <th scope="col">Alergias</th>
+                    <th scope="col">Medicacao</th>
+                    <th scope="col">Plano de Saude</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for patient in patients %}
+                        <tr>
+                            <th scope="row">{{ patient.id }}</th>
+                            <td>{{ patient.first_name }}</td>
+                            <td>{{ patient.last_name }}</td>
+                            <td>{{ patient.age }}</td>
+                            <td>{{ patient.gender }}</td>
+                            <td>{{ patient.cpf }}</td>
+                            <td>{{ patient.phone }}</td>
+                            <td>{{ patient.address }}</td>
+                            <td>{{ patient.diseases }}</td>
+                            <td>{{ patient.allergies }}</td>
+                            <td>{{ patient.medication }}</td>
+                            <td>{{ patient.health_plan }}</td>
+                            <td>
+                                <a href="{% url 'patients:edit_patient' patient.id %}" class="btn btn-primary btn-sm">Editar</a>
+                            </td>
+                            <td>
+                                <a href="{% url 'patients:delete_patient' patient.id %}" class="btn btn-danger btn-sm ">Excluir</a>
+                            </td>
+                            <td>   
+                                 <a href="{% url 'orders:add_order' patient.id %}" class="btn btn-danger btn-sm ">Pedir</a>
+                            </td>
+                        </tr> 
+                    {% endfor %}
+                </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock body %}
