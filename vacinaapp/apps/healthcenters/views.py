@@ -1,6 +1,6 @@
-from django.shortcuts import render, get_object_or_404, redirect
 from .forms import HealthcenterForm
 from .models import Healthcenter, Professional, HealthcenterProfessional
+from django.shortcuts import render, get_object_or_404, redirect
 
 # Create your views here.
 
