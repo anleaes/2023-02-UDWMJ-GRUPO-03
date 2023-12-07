@@ -31,8 +31,7 @@
                     <th scope="col">Doencas</th>
                     <th scope="col">Alergias</th>
                     <th scope="col">Medicacao</th>
-                    <th scope="col">Plano de Saude</th>
-                    <th scope="col"></th>
+                    <th scope="col">Plano</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
                     </tr>
@@ -57,9 +56,6 @@
                             </td>
                             <td>
                                 <a href="{% url 'patients:delete_patient' patient.id %}" class="btn btn-danger btn-sm ">Excluir</a>
-                            </td>
-                            <td>   
-                                 <a href="{% url 'orders:add_order' patient.id %}" class="btn btn-danger btn-sm ">Pedir</a>
                             </td>
                         </tr> 
                     {% endfor %}

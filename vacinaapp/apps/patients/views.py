@@ -29,7 +29,7 @@ def list_patients(request):
 def edit_patient(request, id_patient):
     template_name = 'patients/add_patient.html'
     context ={}
-    patient = get_object_or_404(patient, id=id_patient)
+    patient = get_object_or_404(Patient, id=id_patient)
     if request.method == 'POST':
         form = PatientForm(request.POST, instance=patient)
         if form.is_valid():

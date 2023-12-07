@@ -7,7 +7,7 @@ class Patient(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
     first_name = models.CharField('Nome', max_length=50)
     last_name = models.CharField('Sobrenome', max_length=100)
-    age = models.IntegerField('Idade', max_length=3)
+    age = models.IntegerField('Idade')
     GENDER_CHOICES = (
         ('M', 'Masculino'),
         ('F', 'Feminino'),
