@@ -1,3 +1,23 @@
 from django.db import models
+from brands.models import Brand
 
 # Create your models here.
+
+class Batch(models.Model):
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on = models.DateTimeField(auto_now=True)
+    is_active = models.BooleanField('Ativo', default=False)
+    number = models.IntegerField('Numero do Lote')
+    date = models.DateField('Data Fabricacao', auto_now=False, auto_now_add=False)
+    expitarion_date = models.DateField('Data Expiracao', auto_now=False, auto_now_add=False)
+    quantity = models.IntegerField('Quantidade de Vacinas')
+    brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
+
+    
+    class Meta:
+        verbose_name = 'Lote'
+        verbose_name_plural = 'Lotes'
+        ordering =['id']
+
+    def __str__(self):
+        return self.number
