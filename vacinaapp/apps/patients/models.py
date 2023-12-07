@@ -7,7 +7,7 @@ class Patient(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
     first_name = models.CharField('Nome', max_length=50)
     last_name = models.CharField('Sobrenome', max_length=100)
-    age = models.IntegerField('Idade', max_length=3)
+    age = models.IntegerField('Idade')
     GENDER_CHOICES = (
         ('M', 'Masculino'),
         ('F', 'Feminino'),
@@ -17,9 +17,9 @@ class Patient(models.Model):
     cpf = models.CharField('CPF', max_length=11)
     phone = models.CharField('Telefone celular', max_length=20)
     address = models.CharField('Endereco', max_length=200)   
-    diseases = models.TextField('Doenças', max_length=200)
+    diseases = models.TextField('Doencas', max_length=200)
     allergies = models.TextField('Alergias', max_length=200)
-    medication = models.TextField('Medicação', max_length=200)
+    medication = models.TextField('Medicacao', max_length=200)
     health_plan = models.CharField('Plano de saude', max_length=50)
     
     class Meta:
