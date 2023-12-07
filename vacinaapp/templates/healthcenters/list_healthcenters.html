@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    Lista de Centros de Saude - {{ block.super }}
+
+{% endblock title %}
+
+{% block body %}
+
+    <div class="container">
+        <br />
+        <h5><b>Lista de Centros de Saude</b></h5>
+        <div class="row">
+            <div class ="col-md-12">
+                <br />
+                    <a href="{% url 'healthcenters:add_healthcenter' %}">Cadastro de novo centros de saude</a>
+                <br />
+                <br />
+                <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Endereco</th>
+                    <th scope="col">Telefone</th>
+                    <th scope="col">Redes sociais</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for healthcenter in healthcenters %}
+                        <tr>
+                            <th scope="row">{{ healthcenter.id }}</th>
+                            <td>{{ healthcenter.name }}</td>
+                            <td>{{ healthcenter.address }}</td>
+                            <td>{{ healthcenter.phone }}</td>
+                            <td>
+                                {% for healthcenter_professional in healthcenter_professionals %}
+                                    {% if healthcenter_professional.healthcenter_id == healthcenter.id %}
+                                        <li>{{ healthcenter_professional.professional }}</li>
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
+                            <td>
+                                <a href="{% url 'healthcenters:edit_healthcenter' healthcenter.id %}" class="btn btn-primary btn-sm">Editar</a>
+                            </td>
+                            <td>
+                                <a href="{% url 'healthcenters:delete_healthcenter' healthcenter.id %}" class="btn btn-danger btn-sm ">Excluir</a>
+                            </td>
+                        </tr> 
+                    {% endfor %}
+                </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock body %}
