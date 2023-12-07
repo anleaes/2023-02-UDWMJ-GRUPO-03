@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'professionals.apps.ProfessionalsConfig',
     'patients.apps.PatientsConfig',
     'brands.apps.BrandsConfig',
+    'healthcenters.apps.HealthcentersConfig',
 ]
 
 MIDDLEWARE = [
