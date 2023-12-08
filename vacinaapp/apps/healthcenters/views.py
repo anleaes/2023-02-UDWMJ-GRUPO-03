@@ -1,9 +1,10 @@
 from .forms import HealthcenterForm
 from .models import Healthcenter, Professional, HealthcenterProfessional
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-
+@login_required(login_url='/contas/login/')
 def add_healthcenter(request):
     template_name = 'healthcenters/add_healthcenter.html'
     context = {}
@@ -18,6 +19,7 @@ def add_healthcenter(request):
     context['form'] = form
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def list_healthcenters(request):
     template_name = 'healthcenters/list_healthcenters.html'
     healthcenter_professionals = HealthcenterProfessional.objects.filter()
@@ -30,6 +32,7 @@ def list_healthcenters(request):
     }
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def edit_healthcenter(request, id_healthcenter):
     template_name = 'healthcenters/add_healthcenter.html'
     context ={}
@@ -43,6 +46,7 @@ def edit_healthcenter(request, id_healthcenter):
     context['form'] = form
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def delete_healthcenter(request, id_healthcenter):
     healthcenter = Healthcenter.objects.get(id=id_healthcenter)
     healthcenter.delete()

@@ -1,9 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import ProfessionalForm
 from .models import Professional
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-
+@login_required(login_url='/contas/login/')
 def add_professional(request):
     template_name = 'professionals/add_professional.html'
     context = {}
@@ -18,6 +19,7 @@ def add_professional(request):
     context['form'] = form
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def list_professionals(request):
     template_name = 'professionals/list_professionals.html'
     professionals = Professional.objects.filter()
@@ -26,6 +28,7 @@ def list_professionals(request):
     }
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def edit_professional(request, id_professional):
     template_name = 'professionals/add_professional.html'
     context ={}
@@ -39,6 +42,7 @@ def edit_professional(request, id_professional):
     context['form'] = form
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def delete_professional(request, id_professional):
     professional = Professional.objects.get(id=id_professional)
     professional.delete()
