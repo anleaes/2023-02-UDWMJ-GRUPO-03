@@ -57,6 +57,9 @@
                             <td>
                                 <a href="{% url 'patients:delete_patient' patient.id %}" class="btn btn-danger btn-sm ">Excluir</a>
                             </td>
+                            <td>   
+                                <a href="{% url 'appointments:add_appointment' patient.id %}" class="btn btn-danger btn-sm ">Solicitar</a>
+                           </td>
                         </tr> 
                     {% endfor %}
                 </tbody>
