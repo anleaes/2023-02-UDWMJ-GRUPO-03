@@ -9,4 +9,5 @@ urlpatterns = [
     path('excluir/<int:id_appointment>/', views.delete_appointment, name='delete_appointment'),
     path('excluir-vacina/<int:id_appointment_vaccine>/', views.delete_appointment_vaccine, name='delete_appointment_vaccine'),
     path('adicionar-vacina/<int:id_appointment>/', views.add_appointment_vaccine, name='add_appointment_vaccine'),
+    path('buscar/', views.search_appointments, name='search_appointments'),
 ]

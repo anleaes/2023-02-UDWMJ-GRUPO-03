@@ -64,3 +64,13 @@ def delete_appointment_vaccine(request, id_appointment_vaccine):
     appointment_vaccine = AppointmentVaccine.objects.get(id=id_appointment_vaccine)
     appointment_vaccine.delete()
     return redirect('appointments:list_appointments')
+
+@login_required(login_url='/contas/login/')
+def search_appointments(request):
+    template_name = 'appointments/list_appointments.html'
+    query = request.GET.get('query')
+    appointments = Appointment.objects.filter(registry_id__icontains=query)
+    context = {
+        'appointments': appointments
+    }
+    return render(request,template_name, context)
