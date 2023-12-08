@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'healthcenters.apps.HealthcentersConfig',
     'batches.apps.BatchesConfig',
     'vaccines.apps.VaccinesConfig',
+    'appointments.apps.AppointmentsConfig',
 ]
 
 MIDDLEWARE = [

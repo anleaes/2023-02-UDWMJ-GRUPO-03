@@ -27,6 +27,7 @@ urlpatterns = [
     path('centros_de_saude/', include('healthcenters.urls', namespace='healthcenters')),
     path('lotes/', include('batches.urls', namespace='batches')),
     path('vacinas/', include('vaccines.urls', namespace='vaccines')),
+    path('agendamentos/', include('appointments.urls', namespace='appointments')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
