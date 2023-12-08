@@ -1,8 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import AppointmentForm, AppointmentVaccineForm
 from .models import Appointment, AppointmentVaccine, Vaccine, Patient
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required(login_url='/contas/login/')
 def add_appointment(request, id_patient):
     template_name = 'appointments/add_appointment.html'
     context = {}
@@ -20,6 +22,7 @@ def add_appointment(request, id_patient):
     context['form'] = form
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def list_appointments(request):
     template_name = 'appointments/list_appointments.html'
     appointments = Appointment.objects.filter()
@@ -34,11 +37,13 @@ def list_appointments(request):
     }
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def delete_appointment(request, id_appointment):
     appointment = Appointment.objects.get(id=id_appointment)
     appointment.delete()
     return redirect('appointments:list_appointments')
 
+@login_required(login_url='/contas/login/')
 def add_appointment_vaccine(request, id_appointment):
     template_name = 'appointments/add_appointment_vaccine.html'
     context = {}
@@ -54,6 +59,7 @@ def add_appointment_vaccine(request, id_appointment):
     context['form'] = form
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def delete_appointment_vaccine(request, id_appointment_vaccine):
     appointment_vaccine = AppointmentVaccine.objects.get(id=id_appointment_vaccine)
     appointment_vaccine.delete()

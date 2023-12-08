@@ -1,8 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import VaccinationRegistryForm
 from .models import VaccinationRegistry
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required(login_url='/contas/login/')
 def add_vaccinationregistry(request):
     template_name = 'vaccinationregistries/add_vaccinationregistry.html'
     context = {}
@@ -17,6 +19,7 @@ def add_vaccinationregistry(request):
     context['form'] = form
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def list_vaccinationregistries(request):
     template_name = 'vaccinationregistries/list_vaccinationregistries.html'
     vaccinationregistries = VaccinationRegistry.objects.filter()
@@ -25,6 +28,7 @@ def list_vaccinationregistries(request):
     }
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def edit_vaccinationregistry(request, id_vaccinationregistry):
     template_name = 'vaccinationregistries/add_vaccinationregistry.html'
     context ={}
@@ -38,6 +42,7 @@ def edit_vaccinationregistry(request, id_vaccinationregistry):
     context['form'] = form
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def delete_vaccinationregistry(request, id_vaccinationregistry):
     vaccinationregistry = VaccinationRegistry.objects.get(id=id_vaccinationregistry)
     vaccinationregistry.delete()
