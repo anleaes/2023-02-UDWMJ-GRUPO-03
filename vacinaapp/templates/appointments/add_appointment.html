@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% block title %}
+
+    Adicionar Agendamento - {{ block.super }}
+
+{% endblock title %}
+
+{% block body %}
+
+    <div class="container">
+        <br />
+    <h5><b>Deseja realizar um agendamento? </b></h5>
+        <div class="row">
+            <div class ="col-md-12">
+                <form action="" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="{{ form.registry_id.id_for_label }}">ID de Registro</label>
+                    {{ form.registry_id|add_class:"form-control" }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.health_center.id_for_label }}">Posto de Saude</label>
+                    {{ form.health_center|add_class:"form-control" }}
+                </div>
+                    <button type="submit" class="btn btn-primary btn-sm">Sim</button>   <a href="{% url 'patients:list_patients' %}" class="btn btn-primary btn-sm">Nao</a>     
+                </form>
+                
+            </div>
+        </div>
+    </div>
+
+{% endblock body %}
